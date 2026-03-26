@@ -1,27 +1,67 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Credit Card Fraud Detection</title>
+
+<title>Movie Genre Prediction</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+text-align:center;
+margin-top:100px;
+}
+
+.container{
+background:white;
+width:500px;
+margin:auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0px 0px 10px gray;
+}
+
+textarea{
+width:90%;
+height:120px;
+}
+
+button{
+padding:10px 20px;
+background:blue;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h2>Credit Card Fraud Detection</h2>
+<div class="container">
+
+<h2>Movie Genre Prediction</h2>
 
 <form action="/predict" method="post">
 
-<label>Transaction Time (in hours)</label><br>
-<input type="number" step="any" name="time" placeholder="Enter time in hours" required><br><br>
+<textarea name="plot" placeholder="Enter movie plot here"></textarea>
 
-<label>Transaction Amount</label><br>
-<input type="number" step="any" name="amount" placeholder="Enter amount" required><br><br>
+<br><br>
 
-<button type="submit">Predict</button>
+<button type="submit">Predict Genre</button>
 
 </form>
 
-<h3>{{ prediction_text }}</h3>
+{% if prediction %}
+
+<h3>Predicted Genre: {{ prediction }}</h3>
+
+{% endif %}
+
+</div>
 
 </body>
 </html>

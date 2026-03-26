@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request
-import numpy as np
 import pickle
 
 app = Flask(__name__)
 
-model = pickle.load(open("fraud_model.pkl","rb"))
-scaler = pickle.load(open("scaler.pkl","rb"))
+# Load trained model
+model = pickle.load(open("model.pkl", "rb"))
+vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
 
 @app.route("/")
 def home():
@@ -14,28 +14,13 @@ def home():
 @app.route("/predict", methods=["POST"])
 def predict():
 
-    try:
-        time_hours = float(request.form["time"])
-        amount = float(request.form["amount"])
+    plot = request.form["plot"]
 
-        # convert hours → seconds
-        time_seconds = time_hours * 3600
+    plot_vector = vectorizer.transform([plot])
 
-        input_data = np.array([[time_seconds, amount]])
+    prediction = model.predict(plot_vector)
 
-        input_scaled = scaler.transform(input_data)
-
-        prediction = model.predict(input_scaled)
-
-        if prediction[0] == 1:
-            result = "Fraudulent Transaction"
-        else:
-            result = "Legitimate Transaction"
-
-    except Exception as e:
-        result = str(e)
-
-    return render_template("index.html", prediction_text=result)
+    return render_template("index.html", prediction=prediction[0])
 
 if __name__ == "__main__":
     app.run(debug=True)
