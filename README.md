@@ -1,157 +1,144 @@
-# Credit Card Fraud Detection Web App
+# Movie Genre Prediction using Machine Learning
 
-##  Overview
+## Project Overview
 
-This project is a **Machine Learning-based web application** that predicts whether a credit card transaction is **fraudulent or legitimate**.
+This project is a **Machine Learning-based web application** that predicts the **genre of a movie** based on its **plot summary (text input)**.
 
-It uses a **Random Forest Classifier** trained on transaction data and a **Flask web interface** for user interaction.
-
----
-
-##  Objective
-
-* Detect fraudulent credit card transactions
-* Provide real-time predictions
-* Build a simple ML-powered web application
+The system uses **Natural Language Processing (NLP)** techniques like **TF-IDF** and classification algorithms such as **Naive Bayes / Support Vector Machine (SVM)** to analyze the text and predict the genre.
 
 ---
 
-##  Tech Stack
+## Features
+
+* Predicts movie genre from plot description
+* Uses Machine Learning and NLP techniques
+* Simple and interactive web interface
+* Supports multiple genres (Action, Comedy, Romance, Horror, etc.)
+* Fast and efficient prediction
+
+---
+
+##  Technologies Used
 
 * Python
-* Flask
-* Scikit-learn
-* Pandas, NumPy
-* HTML, CSS
+* Machine Learning (Scikit-learn)
+* Natural Language Processing (TF-IDF)
+* Flask (Web Framework)
+* HTML & CSS (Frontend)
 
 ---
 
 ##  Project Structure
 
 ```
-credit_card_fraud_detection/
+movie_gener_project
 │
-├── app.py
-├── train_model.py
-├── fraud_model.pkl
-├── scaler.pkl
-├── creditcard.csv
+├── app.py                 # Flask web application
+├── train_model.py         # Model training script
+├── dataset.csv            # Movie dataset
+├── model.pkl              # Trained ML model
+├── vectorizer.pkl         # TF-IDF vectorizer
 │
-├── templates/
-│   └── index.html
+├── templates
+│   ├── index.html         # Input page
+│   └── result.html        # Output page
 │
-└── static/
-    └── style.css
+└── static
+    └── style.css          # Styling file
+```
+
+---
+
+##  Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```
+git clone https://github.com/your-username/movie-genre-prediction.git
+cd movie-genre-prediction
+```
+
+### 2️⃣ Install Dependencies
+
+```
+pip install pandas scikit-learn flask
+```
+
+### 3️⃣ Train the Model
+
+```
+python train_model.py
+```
+
+### 4️⃣ Run the Application
+
+```
+python app.py
+```
+
+### 5️⃣ Open in Browser
+
+```
+http://127.0.0.1:5000
 ```
 
 ---
 
 ##  How It Works
 
-1. User enters:
-
-   * Transaction Time (in hours)
-   * Transaction Amount
-
-2. System:
-
-   * Converts time from hours → seconds
-   * Scales input data
-   * Uses trained ML model for prediction
-
-3. Output:
-
-   *  Legitimate Transaction
-   * Fraudulent Transaction
+1. User enters a movie plot (text)
+2. Text is converted into numerical features using TF-IDF
+3. Machine Learning model analyzes the features
+4. Model predicts the movie genre
+5. Result is displayed on the web page
 
 ---
 
-##  Setup Instructions
-
-### 1. Clone Repository
+## 🧪 Example Input
 
 ```
-git clone https://github.com/your-username/credit-card-fraud-detection.git
-cd credit-card-fraud-detection
+A detective investigates a mysterious murder case and uncovers a dangerous conspiracy.
 ```
 
-### 2. Install Dependencies
+### Output:
 
 ```
-pip install pandas numpy scikit-learn flask
-```
-
-### 3. Train Model
-
-```
-python train_model.py
-```
-
-### 4. Run Application
-
-```
-python app.py
-```
-
-### 5. Open Browser
-
-```
-http://127.0.0.1:5000/
+Thriller
 ```
 
 ---
 
-##  Sample Input
+##  Model Performance
 
-| Time (hours) | Amount |
-| ------------ | ------ |
-| 2            | 500    |
-| 5            | 2000   |
+* Algorithm: Naive Bayes / SVM
+* Accuracy: ~60% to 75% (depends on dataset)
 
 ---
 
-## Output
+##  Future Improvements
 
-* Legitimate Transaction
-* Fraudulent Transaction
-
----
-
-##  Machine Learning Model
-
-* Algorithm: Random Forest
-* Features Used:
-
-  * Transaction Time (`unix_time`)
-  * Transaction Amount (`amt`)
+* Use deep learning models (LSTM, BERT)
+* Improve dataset quality
+* Add multiple genre prediction
+* Enhance UI design
 
 ---
 
-##  Features
+##  Applications
 
-* Simple UI
-* Fast predictions
-* Easy to use
-* Beginner-friendly project
-
----
-
-##  Future Enhancements
-
-* Add more input features
-* Improve model accuracy
-* Deploy online
-* Add dashboard visualization
+* Movie recommendation systems
+* Streaming platforms
+* Content classification
+* Search engines
 
 ---
 
-## Author
-Puli Madhavi
+##  Author
+
+* Puli Madhavi
 
 ---
 
-##Conclusion
+##  License
 
-This project shows how **Machine Learning and Flask** can be used together to build a real-world fraud detection system.
-
----
+This project is for educational purposes.
